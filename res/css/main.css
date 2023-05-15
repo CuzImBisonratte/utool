@@ -1,10 +1,9 @@
 :root {
-    --text-color: #ffffff;
-    --text2-color: #cccccc;
-    --text-light: #222222;
-    --background-color: #282c36;
-    --background2-color: #181c26;
-    --background3-color: #0f111a;
+    --text-color: #000000;
+    --text2-color: #282c36;
+    --background-color: #e8f6ee;
+    --background2-color: #d8d3da;
+    --background3-color: #ffffff;
     --accent-color: #eb660e;
     --accent2-color: #f2a900;
     --navbar-height: 5rem;
@@ -17,7 +16,6 @@ body {
     margin: 0;
     padding: 0;
     width: 100%;
-    height: 100%;
     transition: 0;
     font-size: 100%;
     color: var(--text-color);

@@ -1,0 +1,94 @@
+nav {
+    height: var(--navbar-height);
+    background-color: var(--background3-color);
+    width: 100%;
+    position: fixed;
+    display: block;
+    border-bottom: 2px solid var(--background2-color);
+    top: 0;
+    padding: 0 5rem;
+    z-index: 50;
+}
+
+.menu {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    font-size: 1.5rem;
+}
+
+.menu div {
+    display: grid;
+    margin: 0.5rem;
+    padding: 0.6125rem;
+    place-content: center;
+    cursor: pointer;
+    border-radius: 1rem;
+}
+
+.menu div:hover {
+    background-color: var(--background-color);
+}
+
+.menu div * {
+    display: inline;
+    color: #444;
+}
+
+
+/* 
+main
+*/
+
+
+main {
+    padding: 3rem;
+    position: relative;
+    max-width: 1000px;
+    margin: var(--navbar-height) auto auto auto;
+    height: calc(100% - var(--navbar-height));
+}
+
+.accent-color {
+    background-color: var(--accent-color);
+    height: 5px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.page-title {
+    font-size: 1.5rem;
+    padding: 1rem;
+    background-color: var(--background3-color);
+    position: relative;
+    height: 4rem;
+    border-bottom: 2px solid var(--background2-color);
+}
+
+.add-survey-button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 1rem;
+    padding: 0.5rem;
+    border: 2px solid var(--accent-color);
+    border-radius: 0.5rem;
+    margin: 0.75rem;
+    cursor: pointer;
+    transition: 0.25s;
+}
+
+.add-survey-button:hover {
+    background-color: #44444422;
+    transform: scale(1.05);
+    color: var(--accent-color);
+}
+
+.survey-list {
+    font-size: 1.5rem;
+    padding: 1rem;
+    background-color: var(--background3-color);
+    position: relative;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
