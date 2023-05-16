@@ -34,6 +34,11 @@ if ($stmt = $con->prepare("SELECT * FROM " . $config["db"]["tables"]["users"])) 
     <div class="overlays">
         <div class="overlay add_user" id="add_user">
             <h1>Add user</h1>
+            <div class="form">
+                <input type="text" name="name" id="name" placeholder="Max Mustermann">
+                <input type="email" name="email" id="email" placeholder="max.muster@mann.de">
+                <input type="submit" value="Add User" onclick="addUser();">
+            </div>
         </div>
     </div>
     <nav>
@@ -78,6 +83,7 @@ if ($stmt = $con->prepare("SELECT * FROM " . $config["db"]["tables"]["users"])) 
     </main>
     <script src="/res/js/jquery/jquery-3.6.1.min.js"></script>
     <script src="overlay.js"></script>
+    <script src="users.js"></script>
 </body>
 
 </html>
