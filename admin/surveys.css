@@ -80,3 +80,14 @@
     font-size: 1.5rem;
     cursor: pointer;
 }
+
+/*
+Overlay
+*/
+
+.add_survey {
+    min-width: 400px;
+    background-color: var(--background2-color);
+    padding: 1rem;
+    border-radius: 1rem;
+}

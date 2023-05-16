@@ -15,6 +15,9 @@
 </head>
 
 <body>
+    <div class="overlays">
+        <div class="overlay add_survey" id="add_survey">A</div>
+    </div>
     <nav>
         <div class="menu">
             <div class="Dashboard" onclick="location.assign('./');"><span><i class="fas fa-tachometer-alt"></i> Dashboard</span></div>
@@ -28,7 +31,7 @@
         <div class="accent-color"></div>
         <div class="page-title">
             Surveys
-            <div class="add-survey-button"><i class="fas fa-plus"></i> Add survey</div>
+            <div class="add-survey-button" onclick="openOverlay('add_survey');"><i class="fas fa-plus"></i> Add survey</div>
         </div>
         <div class="survey_container table-top-container">
             <div class="survey_status"></div>
@@ -68,6 +71,8 @@
             </div>
         </div>
     </main>
+    <script src="/res/js/jquery/jquery-3.6.1.min.js"></script>
+    <script src="overlay.js"></script>
 </body>
 
 </html>
