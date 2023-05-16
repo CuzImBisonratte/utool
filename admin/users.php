@@ -39,7 +39,7 @@ if ($stmt = $con->prepare("SELECT * FROM " . $config["db"]["tables"]["users"])) 
     <nav>
         <div class="menu">
             <div class="Dashboard" onclick="location.assign('./');"><span><i class="fas fa-tachometer-alt"></i> Dashboard</span></div>
-            <div class="users" onclick="location.assign('./users.php');"><span><i class="fas fa-poll"></i> Surveys</span></div>
+            <div class="surveys" onclick="location.assign('./surveys.php');"><span><i class="fas fa-poll"></i> Surveys</span></div>
             <div class="users" onclick="location.assign('./users.php');"><span><i class="fas fa-users"></i> Users</span></div>
             <div class="settings" onclick="location.assign('./settings.php');"><span><i class="fas fa-cog"></i> Settings</span></div>
         </div>
