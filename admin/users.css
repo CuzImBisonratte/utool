@@ -93,3 +93,8 @@ Overlay
     padding: 1rem;
     border-radius: 1rem;
 }
+
+.add_user h1 {
+    margin: 0;
+    font-size: 1.5rem;
+}
