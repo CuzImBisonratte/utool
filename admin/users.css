@@ -1,0 +1,95 @@
+.add-user-button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 1rem;
+    padding: 0.5rem;
+    border: 2px solid var(--accent-color);
+    border-radius: 0.5rem;
+    margin: 0.75rem;
+    cursor: pointer;
+    transition: 0.25s;
+}
+
+.add-user-button:hover {
+    background-color: #44444422;
+    transform: scale(1.05);
+    color: var(--accent-color);
+}
+
+.user-list {
+    font-size: 1.5rem;
+    background-color: var(--background3-color);
+    position: relative;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.user_container {
+    display: grid;
+    grid-template-columns: 3rem 3fr 3fr 1fr 2rem;
+    grid-template-rows: 1fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+        "user_initials user_name user_email user_lastlogin vellip_container";
+    border-top: 2px solid var(--background2-color);
+    width: 100%;
+    padding: 1rem;
+    color: #444;
+}
+
+.table-top-container {
+    text-transform: uppercase;
+    color: #444;
+    font-size: 1rem;
+    background-color: var(--background3-color);
+    border: 0px;
+}
+
+.table-top-container>div {
+    font-size: 1em;
+}
+
+.user_initials {
+    grid-area: user_initials;
+    display: grid;
+    place-content: center;
+    font-size: 1rem;
+    text-align: center;
+}
+
+.user_name {
+    grid-area: user_name;
+}
+
+.user_email {
+    grid-area: user_email;
+    font-size: 0.5em;
+    display: grid;
+    place-content: center start;
+}
+
+.user_lastlogin {
+    grid-area: user_lastlogin;
+    font-size: 0.75rem;
+}
+
+.vellip_container {
+    grid-area: vellip_container;
+    display: grid;
+    place-content: center;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+/*
+Overlay
+*/
+
+.add_user {
+    min-width: 400px;
+    background-color: var(--background2-color);
+    padding: 1rem;
+    border-radius: 1rem;
+}
