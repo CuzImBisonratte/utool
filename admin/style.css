@@ -33,6 +33,7 @@ nav {
 .menu div * {
     display: inline;
     color: #444;
+    text-align: center;
 }
 
 
@@ -63,32 +64,4 @@ main {
     position: relative;
     height: 4rem;
     border-bottom: 2px solid var(--background2-color);
-}
-
-.add-survey-button {
-    position: absolute;
-    top: 0;
-    right: 0;
-    font-size: 1rem;
-    padding: 0.5rem;
-    border: 2px solid var(--accent-color);
-    border-radius: 0.5rem;
-    margin: 0.75rem;
-    cursor: pointer;
-    transition: 0.25s;
-}
-
-.add-survey-button:hover {
-    background-color: #44444422;
-    transform: scale(1.05);
-    color: var(--accent-color);
-}
-
-.survey-list {
-    font-size: 1.5rem;
-    padding: 1rem;
-    background-color: var(--background3-color);
-    position: relative;
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
 }

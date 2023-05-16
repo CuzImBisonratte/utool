@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="de">
 
@@ -12,6 +11,7 @@
     <link rel="stylesheet" href="/res/css/fonts.css">
     <link rel="stylesheet" href="/res/css/main.css">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="surveys.css">
 </head>
 
 <body>
@@ -30,8 +30,42 @@
             Surveys
             <div class="add-survey-button"><i class="fas fa-plus"></i> Add survey</div>
         </div>
+        <div class="survey_container table-top-container">
+            <div class="survey_status"></div>
+            <div class="survey_title">Title</div>
+            <div class="survey_timespan">Timespan</div>
+            <div class="survey_answers">Answers</div>
+            <div class="vellip_container"></div>
+        </div>
         <div class="survey-list">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit, beatae asperiores nulla minima adipisci facilis?
+            <div class="survey_container">
+                <div class="survey_status" style="color: red"><i class="fas fa-circle"></i></div>
+                <div class="survey_title">I am a test title</div>
+                <div class="survey_timespan">-</div>
+                <div class="survey_answers">42</div>
+                <div class="vellip_container">&vellip;</div>
+            </div>
+            <div class="survey_container">
+                <div class="survey_status" style="color: lightgreen"><i class="fas fa-circle"></i></div>
+                <div class="survey_title">Nice?</div>
+                <div class="survey_timespan">15.05.2023 -<br>15.12.2023</div>
+                <div class="survey_answers">69</div>
+                <div class="vellip_container">&vellip;</div>
+            </div>
+            <div class="survey_container">
+                <div class="survey_status" style="color: lightgreen"><i class="fas fa-circle"></i></div>
+                <div class="survey_title">Test survey name</div>
+                <div class="survey_timespan">23.03.2023 -<br>23.03.2024</div>
+                <div class="survey_answers">5</div>
+                <div class="vellip_container">&vellip;</div>
+            </div>
+            <div class="survey_container">
+                <div class="survey_status" style="color: yellow"><i class="fas fa-circle"></i></div>
+                <div class="survey_title">Automated Survey heh</div>
+                <div class="survey_timespan">15.08.2023 -<br>04.11.2023</div>
+                <div class="survey_answers">-</div>
+                <div class="vellip_container">&vellip;</div>
+            </div>
         </div>
     </main>
 </body>
