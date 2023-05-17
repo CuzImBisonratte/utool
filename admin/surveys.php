@@ -10,6 +10,20 @@ if (
     !isset($_SESSION['id'])
 ) header("Location: /admin/login.html");
 
+require_once $_SERVER['DOCUMENT_ROOT'] . '/config.php';
+
+$con = mysqli_connect($config["db"]["host"], $config["db"]["user"], $config["db"]["password"], $config["db"]["name"]);
+if (mysqli_connect_errno()) die("Failed to connect to MySQL: " . mysqli_connect_error());
+
+if ($stmt = $con->prepare("SELECT * FROM " . $config["db"]["tables"]["surveys"])) {
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $surveys = $result->fetch_all(MYSQLI_ASSOC);
+    $stmt->close();
+} else {
+    die("Failed to prepare statement: " . $con->error);
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="de">
@@ -54,34 +68,28 @@ if (
             <div class="vellip_container"></div>
         </div>
         <div class="survey-list">
-            <div class="survey_container">
-                <div class="survey_status" style="color: red"><i class="fas fa-circle"></i></div>
-                <div class="survey_title">I am a test title</div>
-                <div class="survey_timespan">-</div>
-                <div class="survey_answers">42</div>
-                <div class="vellip_container">&vellip;</div>
-            </div>
-            <div class="survey_container">
-                <div class="survey_status" style="color: lightgreen"><i class="fas fa-circle"></i></div>
-                <div class="survey_title">Nice?</div>
-                <div class="survey_timespan">15.05.2023 -<br>15.12.2023</div>
-                <div class="survey_answers">69</div>
-                <div class="vellip_container">&vellip;</div>
-            </div>
-            <div class="survey_container">
-                <div class="survey_status" style="color: lightgreen"><i class="fas fa-circle"></i></div>
-                <div class="survey_title">Test survey name</div>
-                <div class="survey_timespan">23.03.2023 -<br>23.03.2024</div>
-                <div class="survey_answers">5</div>
-                <div class="vellip_container">&vellip;</div>
-            </div>
-            <div class="survey_container">
-                <div class="survey_status" style="color: yellow"><i class="fas fa-circle"></i></div>
-                <div class="survey_title">Automated Survey heh</div>
-                <div class="survey_timespan">15.08.2023 -<br>04.11.2023</div>
-                <div class="survey_answers">-</div>
-                <div class="vellip_container">&vellip;</div>
-            </div>
+            <?php
+            foreach ($surveys as $survey) {
+                if ($survey["status"] === 0) $status = "red";
+                else if ($survey["status"] === 1) $status = "lightgreen";
+                else if ($survey["status"] === 2) $status = "yellow";
+                if ($survey["answers"] === 0) $answers = "-";
+                else $answers = $survey["answers"];
+                if (strtotime($survey["timespan_start"]) == 0) $survey["timespan_start"] = "";
+                else $survey["timespan_start"] = date("d.m.Y", strtotime($survey["timespan_start"]));
+                if (strtotime($survey["timespan_end"]) == 0) $survey["timespan_end"] = "";
+                else $survey["timespan_end"] = date("d.m.Y", strtotime($survey["timespan_end"]));
+                if ($survey["timespan_start"] == "" && $survey["timespan_end"] == "") $timespan_empty = " timespan_empty";
+                else $timespan_empty = "";
+                echo '<div class="survey_container">
+                    <div class="survey_status" style="color: ' . $status . '"><i class="fas fa-circle"></i></div>
+                    <div class="survey_title">' . $survey["title"] . '</div>
+                    <div class="survey_timespan' . $timespan_empty . '">' . $survey["timespan_start"] . ' -<br>' . $survey["timespan_end"] . '</div>
+                    <div class="survey_answers">' . $answers . '</div>
+                    <div class="vellip_container">&vellip;</div>
+                </div>';
+            }
+            ?>
         </div>
     </main>
     <script src="/res/js/jquery/jquery-3.6.1.min.js"></script>

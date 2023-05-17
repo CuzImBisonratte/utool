@@ -69,6 +69,10 @@
     place-content: center start;
 }
 
+.timespan_empty {
+    font-size: 1em !important;
+}
+
 .survey_answers {
     grid-area: survey_answers;
 }

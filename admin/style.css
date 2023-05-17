@@ -43,10 +43,11 @@ main
 
 
 main {
-    padding: calc(var(--navbar-height) + 3rem) 3rem 3rem 3rem;
+    padding: calc(var(--navbar-height) + 3rem) 3rem 5rem 3rem;
     position: relative;
     max-width: 1000px;
-    height: 100%;
+    min-height: 100%;
+    height: fit-content;
     margin: auto;
 }
 
