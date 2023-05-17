@@ -1,5 +1,15 @@
 <?php
 
+if (!isset($_SESSION)) session_start();
+
+// Not logged in
+if (
+    !isset($_SESSION['login_method']) ||
+    !isset($_SESSION['email']) ||
+    !isset($_SESSION['name']) ||
+    !isset($_SESSION['id'])
+) header("Location: /admin/login.html");
+
 require_once $_SERVER['DOCUMENT_ROOT'] . '/config.php';
 
 $con = mysqli_connect($config["db"]["host"], $config["db"]["user"], $config["db"]["password"], $config["db"]["name"]);

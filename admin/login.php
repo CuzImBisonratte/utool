@@ -29,6 +29,7 @@ if ($stmt = $con->prepare("SELECT id, name, password FROM " . $config["db"]["tab
     if (!password_verify($password, $password_hash)) exit("Wrong password");
 
     // Set session variables
+    session_start();
     $_SESSION["login_method"] = "login";
     $_SESSION["id"] = $id;
     $_SESSION["name"] = $name;
