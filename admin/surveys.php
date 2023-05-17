@@ -43,7 +43,18 @@ if ($stmt = $con->prepare("SELECT * FROM " . $config["db"]["tables"]["surveys"])
 
 <body>
     <div class="overlays">
-        <div class="overlay add_survey" id="add_survey">A</div>
+        <div class="overlay add_survey" id="add_survey">
+            <h1>Add survey</h1>
+            <div class="form">
+                <label for="name">Survey Name</label>
+                <input type="text" name="name" id="name" placeholder="Survey Name">
+                <label for="description">Survey Description</label>
+                <textarea name="description" id="description" placeholder="Survey Description"></textarea>
+                <label for="timespan">Automated Timespan</label>
+                <input type="checkbox" name="timespan" id="timespan">
+                <input type="submit" value="Add Survey" onclick="addSurvey();">
+            </div>
+        </div>
     </div>
     <nav>
         <div class="menu">

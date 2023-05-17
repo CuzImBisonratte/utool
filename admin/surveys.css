@@ -95,3 +95,58 @@ Overlay
     padding: 1rem;
     border-radius: 1rem;
 }
+
+.add_survey {
+    min-width: 300px;
+    background-color: var(--background2-color);
+    padding: 1rem;
+    border-radius: 1rem;
+}
+
+.add_survey h1 {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.add_survey .form input {
+    display: block;
+    width: 100%;
+    height: 2.5rem;
+    border: 0;
+    border-radius: 0.5rem;
+    padding: 0.25rem;
+    margin-top: 0.25rem;
+    font-size: 1rem;
+}
+
+.add_survey .form textarea {
+    display: block;
+    width: min(500px, 90vw);
+    height: 5rem;
+    border: 0;
+    border-radius: 0.5rem;
+    padding: 0.25rem;
+    margin-top: 0.25rem;
+
+}
+
+.add_survey .form input[type="submit"] {
+    transition: 0.25s;
+    cursor: pointer;
+}
+
+.add_survey .form input[type="submit"]:hover {
+    background-color: var(--accent-color);
+    color: #fff;
+}
+
+label {
+    margin-top: 0.5rem;
+    display: inline-block;
+}
+
+#timespan {
+    display: inline-block;
+    width: fit-content;
+    height: fit-content;
+}
