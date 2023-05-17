@@ -1,0 +1,38 @@
+
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administration | uTool</title>
+    <link rel="stylesheet" href="/res/fontawesome/css/fontawesome.min.css">
+    <link rel="stylesheet" href="/res/fontawesome/css/solid.min.css">
+    <link rel="stylesheet" href="/res/css/fonts.css">
+    <link rel="stylesheet" href="/res/css/main.css">
+    <link rel="stylesheet" href="login.css">
+</head>
+
+<body>
+    <main>
+        <div class="login">
+            <div class="login__header">
+                <h1 class="login__title">Administration</h1>
+            </div>
+            <div class="login__body">
+                <form action="login.php" method="post">
+                    <label for="email"><i class="fas fa-envelope"></i> E-Mail</label>
+                    <input type="text" name="email" id="email" placeholder="E-Mail" required>
+                    <label for="password"><i class="fas fa-lock"></i> Passwort</label>
+                    <input type="password" name="password" id="password" placeholder="Passwort" required>
+                    <div class="login__input">
+                        <input type="submit" value="Anmelden">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>

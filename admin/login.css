@@ -1,0 +1,53 @@
+body {
+    display: grid;
+    place-content: center;
+}
+
+main {
+    min-width: 400px;
+    width: fit-content;
+    height: fit-content;
+    margin: auto;
+    background-color: var(--background2-color);
+    box-shadow: 0px 0px 1rem 2rem var(--background2-color);
+    -webkit-box-shadow: 0px 0px 1rem 2rem var(--background2-color);
+    -moz-box-shadow: 0px 0px 1rem 2rem var(--background2-color);
+    border-radius: 0.25rem;
+    border: var(--background2-color) 1px solid;
+}
+
+main h1 {
+    margin: 0;
+}
+
+label,
+input {
+    display: block;
+    width: 100%;
+    border-radius: 0.5rem;
+    border: 0;
+    transition: 0.25s;
+    outline: 0.125rem solid transparent;
+}
+
+input {
+    padding: 0.5rem;
+}
+
+input:not([type="submit"]) {
+    margin-bottom: 0.25rem;
+}
+
+input:not([type="submit"]):active,
+input:not([type="submit"]):focus {
+    outline: 0.125rem solid var(--accent-color);
+}
+
+input[type="submit"] {
+    font-size: 1rem;
+}
+
+input[type="submit"]:hover {
+    background-color: var(--accent-color);
+    color: #fff;
+}
