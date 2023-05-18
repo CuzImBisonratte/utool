@@ -46,12 +46,16 @@ if ($stmt = $con->prepare("SELECT * FROM " . $config["db"]["tables"]["surveys"])
         <div class="overlay add_survey" id="add_survey">
             <h1>Add survey</h1>
             <div class="form">
-                <label for="name">Survey Name</label>
-                <input type="text" name="name" id="name" placeholder="Survey Name">
+                <label for="title">Survey title</label>
+                <input type="text" name="title" id="title" placeholder="Survey title">
                 <label for="description">Survey Description</label>
                 <textarea name="description" id="description" placeholder="Survey Description"></textarea>
                 <label for="timespan">Automated Timespan</label>
                 <input type="checkbox" name="timespan" id="timespan">
+                <div id="timespan_container">
+                    <input type="date" name="timespan_start" id="timespan_start" class="timespan_input" value="<?php echo date("Y-m-d"); ?>">
+                    <input type="date" name="timespan_end" id="timespan_end" class="timespan_input">
+                </div>
                 <input type="submit" value="Add Survey" onclick="addSurvey();">
             </div>
         </div>
@@ -105,6 +109,7 @@ if ($stmt = $con->prepare("SELECT * FROM " . $config["db"]["tables"]["surveys"])
     </main>
     <script src="/res/js/jquery/jquery-3.6.1.min.js"></script>
     <script src="overlay.js"></script>
+    <script src="surveys.js"></script>
 </body>
 
 </html>

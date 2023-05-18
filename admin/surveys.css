@@ -150,3 +150,13 @@ label {
     width: fit-content;
     height: fit-content;
 }
+
+#timespan_container {
+    display: none;
+    gap: 0.25rem;
+}
+
+#timespan_container input {
+    display: block;
+    flex-grow: 1;
+}
