@@ -91,6 +91,7 @@ if ($stmt = $con->prepare("SELECT * FROM " . $config["db"]["tables"]["surveys"] 
             <i class="fa-solid fa-upload"></i>
             <h3>File</h3>
         </div>
+        <hr>
         <div class="question-type">
             <i class="fa-solid fa-calendar"></i>
             <h3>Date</h3>
