@@ -38,6 +38,7 @@ if ($stmt = $con->prepare("SELECT * FROM " . $config["db"]["tables"]["users"])) 
     <link rel="stylesheet" href="/res/css/main.css">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="users.css">
+    <link rel="shortcut icon" href="/res/img/uTool.webp" type="image/x-icon">
 </head>
 
 <body>
