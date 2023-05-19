@@ -59,7 +59,46 @@ if ($stmt = $con->prepare("SELECT * FROM " . $config["db"]["tables"]["surveys"] 
         <div id="action_button-delete"><i class="fas fa-trash-can"></i></div>
     </nav>
     <aside>
-
+        <div class="plusicon"><i class="fas fa-plus"></i></div>
+        <div class="question-type">
+            <i class="fas fa-minus"></i>
+            <h3>One-Liner</h3>
+        </div>
+        <div class="question-type">
+            <i class="fas fa-align-left"></i>
+            <h3>Text</h3>
+        </div>
+        <hr>
+        <div class="question-type">
+            <i class="fas fa-circle-dot"></i>
+            <h3>Choose (One)</h3>
+        </div>
+        <div class="question-type">
+            <i class="fas fa-square-check"></i>
+            <h3>Choose (Multiple)</h3>
+        </div>
+        <div class="question-type">
+            <i class="fa-solid fa-circle-chevron-down"></i>
+            <h3>Dropdown</h3>
+        </div>
+        <hr>
+        <div class="question-type">
+            <i class="fa-solid fa-sliders"></i>
+            <h3>Slider</h3>
+        </div>
+        <hr>
+        <div class="question-type">
+            <i class="fa-solid fa-upload"></i>
+            <h3>File</h3>
+        </div>
+        <div class="question-type">
+            <i class="fa-solid fa-calendar"></i>
+            <h3>Date</h3>
+        </div>
+        <div class="question-type">
+            <i class="fa-solid fa-clock"></i>
+            <h3>Time</h3>
+        </div>
     </aside>
     <main>
     </main>
