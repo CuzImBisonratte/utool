@@ -50,6 +50,7 @@ aside {
     border-right: 2px solid var(--background2-color);
     padding: 0 0.5rem;
     min-width: 300px;
+    overflow-y: auto;
 }
 
 .plusicon {
