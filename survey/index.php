@@ -115,8 +115,8 @@ if ($stmt = $con->prepare("SELECT * FROM " . $config["db"]["tables"]["questions"
                     echo '<div class="rating_star" id="question_' . $question["id"] . '_1" onclick="rate(' . $question["id"] . ', 1)"><i class="fas fa-star"></i></div>';
                     echo '<div class="rating_star" id="question_' . $question["id"] . '_2" onclick="rate(' . $question["id"] . ', 2)"><i class="fas fa-star"></i></div>';
                     echo '<div class="rating_star" id="question_' . $question["id"] . '_3" onclick="rate(' . $question["id"] . ', 3)"><i class="fas fa-star"></i></div>';
-                    echo '<div class="rating_star" id="question_' . $question["id"] . '_4" onclick="rate(' . $question["id"] . ', 4)"><i class="fas fa-star"></i></div>';
-                    echo '<div class="rating_star" id="question_' . $question["id"] . '_5" onclick="rate(' . $question["id"] . ', 5)"><i class="fas fa-star"></i></div>';
+                    echo '<div class="rating_star" id="question_' . $question["id"] . '_4" onclick="rate(' . $question["id"] . ', 4)"><i class="far fa-star"></i></div>';
+                    echo '<div class="rating_star" id="question_' . $question["id"] . '_5" onclick="rate(' . $question["id"] . ', 5)"><i class="far fa-star"></i></div>';
                     echo '</div></div>';
                     break;
                 default:
