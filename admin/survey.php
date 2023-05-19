@@ -83,22 +83,29 @@ if ($stmt = $con->prepare("SELECT * FROM " . $config["db"]["tables"]["surveys"] 
         </div>
         <hr>
         <div class="question-type">
-            <i class="fa-solid fa-sliders"></i>
-            <h3>Slider</h3>
-        </div>
-        <hr>
-        <div class="question-type">
-            <i class="fa-solid fa-upload"></i>
-            <h3>File</h3>
-        </div>
-        <hr>
-        <div class="question-type">
             <i class="fa-solid fa-calendar"></i>
             <h3>Date</h3>
         </div>
         <div class="question-type">
             <i class="fa-solid fa-clock"></i>
             <h3>Time</h3>
+        </div>
+        <hr>
+        <div class="question-type">
+            <i class="fa-solid fa-sliders"></i>
+            <h3>Slider</h3>
+        </div>
+        <div class="question-type">
+            <i class="fa-solid fa-upload"></i>
+            <h3>File</h3>
+        </div>
+        <div class="question-type">
+            <i class="fa-solid fa-toggle-off"></i>
+            <h3>Toggle</h3>
+        </div>
+        <div class="question-type">
+            <i class="fa-solid fa-star-half-stroke"></i>
+            <h3>Rating</h3>
         </div>
     </aside>
     <main>
