@@ -75,7 +75,6 @@ aside {
 .question-type i {
     height: 100%;
     aspect-ratio: 1/1;
-    display: inline-block;
     float: right;
     font-size: 1.25rem;
 }
