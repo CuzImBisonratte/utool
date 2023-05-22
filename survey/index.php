@@ -27,6 +27,13 @@ if ($stmt = $con->prepare("SELECT * FROM " . $config["db"]["tables"]["questions"
     $stmt->close();
 } else die("Failed to prepare MySQL statement.");
 
+// Sort questions by their order (Order is stored in $survey["questions"])
+$questions_sorted = array();
+foreach (json_decode($survey["questions"]) as $question_id) {
+    array_push($questions_sorted, $questions[$question_id]);
+}
+$questions = $questions_sorted;
+
 ?>
 <!DOCTYPE html>
 <html lang="de">
