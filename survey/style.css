@@ -10,6 +10,7 @@ main {
     min-height: 100%;
     height: fit-content;
     margin: auto;
+    transition: 0.5s;
 }
 
 .accent-color {
@@ -187,4 +188,18 @@ input[type=range]::-moz-range-thumb {
 
 .rating .question_rating .fas {
     color: #ffc400;
+}
+
+/* Small screen */
+@media screen and (max-width: 500px) {
+    main {
+        padding: 1rem;
+    }
+
+    .rating .question_rating {
+        display: flex;
+        flex-direction: row;
+        gap: 0.5rem;
+        font-size: 10vmin;
+    }
 }
