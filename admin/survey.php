@@ -68,7 +68,7 @@ if ($survey["questions"] != NULL) if ($stmt = $con->prepare("SELECT * FROM " . $
     <nav>
         <div id="back-button" onclick="location.assign('surveys.php');"><i class="fas fa-chevron-left"></i></div>
         <input type="text" id="nav-spacer" value="<?= $survey["title"] ?>"></input>
-        <div id="action_button-edit"><i class="fas fa-save"></i></div>
+        <div id="action_button-save"><i class="fas fa-save"></i></div>
         <div id="action_button-visibility"><i class="fas fa-eye"></i></div>
         <div id="action_button-delete"><i class="fas fa-trash-can"></i></div>
     </nav>
@@ -131,60 +131,60 @@ if ($survey["questions"] != NULL) if ($stmt = $con->prepare("SELECT * FROM " . $
             <?php
             if (isset($questions)) foreach ($questions as $question) {
                 echo '<div class="question ' . $question["type"] . '">
-                    <div class="question_title">' . $question["title"] . '</div>';
+                    <div class="question_title" id="question_title_' . $question["id"] . '">' . $question["title"] . '</div>';
                 switch ($question["type"]) {
                     case 'line':
-                        echo '<div class="question_area"><div class="question_line"><input type="text" placeholder="Your answer" id="question_' . $question["id"] . '" disabled></div></div>';
+                        echo '<div class="question_area"><div class="question_line"><input type="text" placeholder="Your answer" id="question_' . $question["id"] . '"></div></div>';
                         break;
                     case 'text':
-                        echo '<div class="question_area"><div class="question_text"><textarea placeholder="Your answer" id="question_' . $question["id"] . '" disabled></textarea></div></div>';
+                        echo '<div class="question_area"><div class="question_text"><textarea placeholder="Your answer" id="question_' . $question["id"] . '"></textarea></div></div>';
                         break;
                     case 'multiplechoice':
                         echo '<div class="question_area"><div class="question_multiplechoice">';
                         foreach (json_decode($question["params"], true)["options"] as $option) {
-                            echo '<div class="option"><input type="radio" name="question_' . $question["id"] . '" id="question_' . $question["id"] . '_' . $option . '" disabled><label for="question_' . $question["id"] . '_' . $option . '">' . $option . '</label></div>';
+                            echo '<div class="option"><input type="radio" name="question_' . $question["id"] . '" id="question_' . $question["id"] . '_' . $option . '"><label for="question_' . $question["id"] . '_' . $option . '">' . $option . '</label></div>';
                         }
                         echo '</div></div>';
                         break;
                     case 'select':
                         echo '<div class="question_area"><div class="question_select">';
                         foreach (json_decode($question["params"], true)["options"] as $option) {
-                            echo '<div class="option"><input type="checkbox" name="question_' . $question["id"] . '" id="question_' . $question["id"] . '_' . $option . '" disabled><label for="question_' . $question["id"] . '_' . $option . '">' . $option . '</label></div>';
+                            echo '<div class="option"><input type="checkbox" name="question_' . $question["id"] . '" id="question_' . $question["id"] . '_' . $option . '"><label for="question_' . $question["id"] . '_' . $option . '">' . $option . '</label></div>';
                         }
                         echo '</div></div>';
                         break;
                     case 'dropdown':
-                        echo '<div class="question_area"><div class="question_dropdown"><select id="question_' . $question["id"] . '" disabled>';
+                        echo '<div class="question_area"><div class="question_dropdown"><select id="question_' . $question["id"] . '">';
                         foreach (json_decode($question["params"], true)["options"] as $option) {
                             echo '<option value="' . $option . '">' . $option . '</option>';
                         }
                         echo '</select></div></div>';
                         break;
                     case 'date':
-                        echo '<div class="question_area"><div class="question_date"><input type="date" id="question_' . $question["id"] . '" disabled></div></div>';
+                        echo '<div class="question_area"><div class="question_date"><input type="date" id="question_' . $question["id"] . '"></div></div>';
                         break;
                     case 'time':
-                        echo '<div class="question_area"><div class="question_time"><input type="time" id="question_' . $question["id"] . '" disabled></div></div>';
+                        echo '<div class="question_area"><div class="question_time"><input type="time" id="question_' . $question["id"] . '"></div></div>';
                         break;
                     case 'slider':
                         echo '<div class="question_area"><div class="question_slider"><input type="range" id="question_' . $question["id"];
                         if (isset(json_decode($question["params"], true)["min"])) echo '" min="' . json_decode($question["params"], true)["min"];
                         if (isset(json_decode($question["params"], true)["max"])) echo '" max="' . json_decode($question["params"], true)["max"];
                         if (isset(json_decode($question["params"], true)["step"])) echo '" step="' . json_decode($question["params"], true)["step"];
-                        echo '" disabled></div></div>';
+                        echo '"></div></div>';
                         break;
                     case 'file':
                         echo '<div class="question_area">
                             <div class="question_file">
                                 <label for="question_' . $question["id"] . '">Choose a file</label>
-                                <input type="file" id="question_' . $question["id"] . '" disabled';
+                                <input type="file" id="question_' . $question["id"] . '"';
                         if (isset(json_decode($question["params"], true)["accept"])) echo ' accept="' . json_decode($question["params"], true)["accept"] . '"';
                         echo '></div></div>';
                         break;
                     case 'toggle':
                         echo '<div class="question_area"><div class="question_toggle">';
                         foreach (json_decode($question["params"], true)["labels"] as $option) {
-                            echo '<div class="option"><input type="radio" name="question_' . $question["id"] . '" id="question_' . $question["id"] . '_' . $option . '" disabled><label for="question_' . $question["id"] . '_' . $option . '">' . $option . '</label></div>';
+                            echo '<div class="option"><input type="radio" name="question_' . $question["id"] . '" id="question_' . $question["id"] . '_' . $option . '"><label for="question_' . $question["id"] . '_' . $option . '">' . $option . '</label></div>';
                         }
                         echo '</div></div>';
                         break;
@@ -206,6 +206,8 @@ if ($survey["questions"] != NULL) if ($stmt = $con->prepare("SELECT * FROM " . $
             ?>
         </div>
     </main>
+    <script src="/res/js/jquery/jquery-3.6.1.min.js"></script>
+    <script src="survey.js"></script>
 </body>
 
 </html>

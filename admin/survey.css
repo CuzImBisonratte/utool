@@ -163,16 +163,6 @@ Question
     grid-area: question_area;
 }
 
-/* 
-Survey inputs
-*/
-
-input,
-textarea,
-select {
-    cursor: not-allowed;
-}
-
 /* One-line */
 .line input {
     border: 0;
@@ -268,10 +258,6 @@ input[type=range]::-moz-range-thumb {
     flex-direction: row;
     gap: 0.5rem;
     font-size: 3rem;
-}
-
-.rating .question_rating .fa-star {
-    cursor: not-allowed;
 }
 
 .rating .question_rating .fas {
