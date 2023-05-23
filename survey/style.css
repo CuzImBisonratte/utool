@@ -83,6 +83,7 @@ Survey inputs
     padding: 0.25rem 0;
     transition: 0.25s;
     border-radius: 0;
+    width: 100%;
 }
 
 .line input:active,
@@ -98,6 +99,7 @@ Survey inputs
     padding: 0.25rem 0;
     transition: 0.125s;
     border-radius: 0;
+    max-width: 100%;
 }
 
 .text textarea:active,
