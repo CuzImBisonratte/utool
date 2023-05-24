@@ -130,6 +130,7 @@ if ($survey["questions"] != NULL) if ($stmt = $con->prepare("SELECT * FROM " . $
             </div>
             <?php
             if (isset($questions)) foreach ($questions as $question) {
+                $params = json_decode($question["params"], true);
                 echo '<div class="question ' . $question["type"] . '">
                     <div class="question_title" id="question_title_' . $question["id"] . '">' . $question["title"] . '</div>';
                 switch ($question["type"]) {
@@ -190,11 +191,10 @@ if ($survey["questions"] != NULL) if ($stmt = $con->prepare("SELECT * FROM " . $
                         break;
                     case 'rating':
                         echo '<div class="question_area"><div class="question_rating">';
-                        echo '<div class="rating_star" id="question_' . $question["id"] . '_1"><i class="fas fa-star"></i></div>';
-                        echo '<div class="rating_star" id="question_' . $question["id"] . '_2"><i class="fas fa-star"></i></div>';
-                        echo '<div class="rating_star" id="question_' . $question["id"] . '_3"><i class="fas fa-star"></i></div>';
-                        echo '<div class="rating_star" id="question_' . $question["id"] . '_4"><i class="far fa-star"></i></div>';
-                        echo '<div class="rating_star" id="question_' . $question["id"] . '_5"><i class="far fa-star"></i></div>';
+                        for ($i = 0; $i < 5; $i++) {
+                            if ($params["default"] - $i > 0) echo '<div class="rating_star" id="question_' . $question["id"] . '_' . $i . '"><i class="fas fa-star"></i></div>';
+                            else echo '<div class="rating_star" id="question_' . $question["id"] . '_' . $i . '"><i class="far fa-star"></i></div>';
+                        }
                         echo '</div></div>';
                         break;
                     default:
@@ -207,7 +207,7 @@ if ($survey["questions"] != NULL) if ($stmt = $con->prepare("SELECT * FROM " . $
                         echo '<div class="options">
                             <fieldset>
                                 <legend>Default</legend>
-                                <input type="number" id="question_' . $question["id"] . '_default" value="0">
+                                <input type="number" id="question_' . $question["id"] . '_default" value="' . $params["default"] . '">
                             </fieldset>
                         </div>';
                         break;
@@ -216,11 +216,11 @@ if ($survey["questions"] != NULL) if ($stmt = $con->prepare("SELECT * FROM " . $
                         echo '<div class="validation">
                             <fieldset>
                                 <legend>Min. number of characters</legend>
-                                <input type="number" id="question_8_min" value="1">
+                                <input type="number" id="question_' . $question["id"] . '_min" value="1">
                             </fieldset>
                             <fieldset>
                                 <legend>Max. number of characters</legend>
-                                <input type="number" id="question_8_max" value="5">
+                                <input type="number" id="question_' . $question["id"] . '_max" value="5">
                             </fieldset>
                         </div>';
                         break;
@@ -228,11 +228,11 @@ if ($survey["questions"] != NULL) if ($stmt = $con->prepare("SELECT * FROM " . $
                         echo '<div class="validation">
                             <fieldset>
                                 <legend>Minimum selections</legend>
-                                <input type="number" id="question_8_min">
+                                <input type="number" id="question_' . $question["id"] . '_min">
                             </fieldset>
                             <fieldset>
                                 <legend>Maximum selections</legend>
-                                <input type="number" id="question_8_max">
+                                <input type="number" id="question_' . $question["id"] . '_max">
                             </fieldset>
                         </div>';
                     case 'multiplechoice':
@@ -243,7 +243,7 @@ if ($survey["questions"] != NULL) if ($stmt = $con->prepare("SELECT * FROM " . $
                                 <legend>Options - Seperated by spaces';
                         if ($question["type"] === "toggle") echo ' (Max 3)';
                         echo '</legend>
-                                <textarea id="question_5_options" cols="2">Option1 Option2 Option3</textarea>
+                                <textarea id="question_' . $question["id"] . '_options" cols="2">Option1 Option2 Option3</textarea>
                             </fieldset>
                         </div>';
                         break;
@@ -252,15 +252,15 @@ if ($survey["questions"] != NULL) if ($stmt = $con->prepare("SELECT * FROM " . $
                         echo '<div class="validation">
                             <fieldset>
                                 <legend>Min</legend>
-                                <input type="' . $question["type"] . '" id="question_8_min" value="1">
+                                <input type="' . $question["type"] . '" id="question_' . $question["id"] . '_min" value="1">
                             </fieldset>
                             <fieldset>
                                 <legend>Default</legend>
-                                <input type="' . $question["type"] . '" id="question_8_max" value="3">
+                                <input type="' . $question["type"] . '" id="question_' . $question["id"] . '_max" value="3">
                             </fieldset>
                             <fieldset>
                                 <legend>Max</legend>
-                                <input type="' . $question["type"] . '" id="question_8_max" value="5">
+                                <input type="' . $question["type"] . '" id="question_' . $question["id"] . '_max" value="5">
                             </fieldset>
                         </div>';
                         break;
@@ -268,15 +268,15 @@ if ($survey["questions"] != NULL) if ($stmt = $con->prepare("SELECT * FROM " . $
                         echo '<div class="validation">
                             <fieldset>
                                 <legend>Min</legend>
-                                <input type="number" id="question_8_min" value="1">
+                                <input type="number" id="question_' . $question["id"] . '_min" value="1">
                             </fieldset>
                             <fieldset>
                                 <legend>Default</legend>
-                                <input type="number" id="question_8_max" value="3">
+                                <input type="number" id="question_' . $question["id"] . '_max" value="3">
                             </fieldset>
                             <fieldset>
                                 <legend>Max</legend>
-                                <input type="number" id="question_8_max" value="5">
+                                <input type="number" id="question_' . $question["id"] . '_max" value="5">
                             </fieldset>
                         </div>';
                         break;
@@ -284,11 +284,11 @@ if ($survey["questions"] != NULL) if ($stmt = $con->prepare("SELECT * FROM " . $
                         echo '<div class="validation">
                             <fieldset>
                                 <legend>Allowed Types - Seperated by spaces</legend>
-                                <input type="text" id="question_8_min" value="png txt jpg pdf">
+                                <input type="text" id="question_' . $question["id"] . '_min" value="png txt jpg pdf">
                             </fieldset>
                             <fieldset>
                                 <legend>Max</legend>
-                                <input type="number" id="question_8_max" value="5">
+                                <input type="number" id="question_' . $question["id"] . '_max" value="5">
                             </fieldset>
                         </div>';
                         break;
