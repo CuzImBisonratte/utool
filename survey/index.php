@@ -135,6 +135,14 @@ $questions = $questions_sorted;
         ?>
     </main>
     <script src="/res/js/jquery/jquery-3.6.1.min.js"></script>
+    <?php
+    foreach ($questions as $question) {
+        if ($question["type"] == "rating") {
+            echo '<script src="rating.js"></script>';
+            break;
+        }
+    }
+    ?>
 </body>
 
 </html>
