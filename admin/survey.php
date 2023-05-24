@@ -184,7 +184,7 @@ if ($survey["questions"] != NULL) if ($stmt = $con->prepare("SELECT * FROM " . $
                         break;
                     case 'toggle':
                         echo '<div class="question_area"><div class="question_toggle">';
-                        foreach ($params["labels"] as $option) {
+                        foreach ($params["options"] as $option) {
                             echo '<div class="option"><input type="radio" name="question_' . $question["id"] . '" id="question_' . $question["id"] . '_' . $option . '"><label for="question_' . $question["id"] . '_' . $option . '">' . $option . '</label></div>';
                         }
                         echo '</div></div>';
@@ -216,11 +216,11 @@ if ($survey["questions"] != NULL) if ($stmt = $con->prepare("SELECT * FROM " . $
                         echo '<div class="validation">
                             <fieldset>
                                 <legend>Min. number of characters</legend>
-                                <input type="number" id="question_' . $question["id"] . '_min" value="1">
+                                <input type="number" id="question_' . $question["id"] . '_min" value="' . $params["min"] . '">
                             </fieldset>
                             <fieldset>
                                 <legend>Max. number of characters</legend>
-                                <input type="number" id="question_' . $question["id"] . '_max" value="5">
+                                <input type="number" id="question_' . $question["id"] . '_max" value="' . $params["max"] . '">
                             </fieldset>
                         </div>';
                         break;
@@ -228,11 +228,11 @@ if ($survey["questions"] != NULL) if ($stmt = $con->prepare("SELECT * FROM " . $
                         echo '<div class="validation">
                             <fieldset>
                                 <legend>Minimum selections</legend>
-                                <input type="number" id="question_' . $question["id"] . '_min">
+                                <input type="number" id="question_' . $question["id"] . '_min" value="' . $params["min"] . '">
                             </fieldset>
                             <fieldset>
                                 <legend>Maximum selections</legend>
-                                <input type="number" id="question_' . $question["id"] . '_max">
+                                <input type="number" id="question_' . $question["id"] . '_max" value="' . $params["max"] . '">
                             </fieldset>
                         </div>';
                     case 'multiplechoice':
