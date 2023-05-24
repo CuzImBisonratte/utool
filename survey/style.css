@@ -99,7 +99,9 @@ Survey inputs
     padding: 0.25rem 0;
     transition: 0.125s;
     border-radius: 0;
-    max-width: 100%;
+    width: 100%;
+    resize: vertical;
+    min-height: 2rem;
 }
 
 .text textarea:active,
