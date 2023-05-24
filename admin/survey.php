@@ -201,7 +201,101 @@ if ($survey["questions"] != NULL) if ($stmt = $con->prepare("SELECT * FROM " . $
                         break;
                 }
                 if ($question["required"] == 1) echo '<div class="required">*</div>';
-                echo '</div>';
+                echo '<div class="options-container">';
+                switch ($question["type"]) {
+                    case 'rating':
+                        echo '<div class="options">
+                            <fieldset>
+                                <legend>Default</legend>
+                                <input type="number" id="question_' . $question["id"] . '_default" value="0">
+                            </fieldset>
+                        </div>';
+                        break;
+                    case 'line':
+                    case 'text':
+                        echo '<div class="validation">
+                            <fieldset>
+                                <legend>Min. number of characters</legend>
+                                <input type="number" id="question_8_min" value="1">
+                            </fieldset>
+                            <fieldset>
+                                <legend>Max. number of characters</legend>
+                                <input type="number" id="question_8_max" value="5">
+                            </fieldset>
+                        </div>';
+                        break;
+                    case 'select':
+                        echo '<div class="validation">
+                            <fieldset>
+                                <legend>Minimum selections</legend>
+                                <input type="number" id="question_8_min">
+                            </fieldset>
+                            <fieldset>
+                                <legend>Maximum selections</legend>
+                                <input type="number" id="question_8_max">
+                            </fieldset>
+                        </div>';
+                    case 'multiplechoice':
+                    case 'dropdown':
+                    case 'toggle':
+                        echo '<div class="options">
+                            <fieldset>
+                                <legend>Options - Seperated by spaces';
+                        if ($question["type"] === "toggle") echo ' (Max 3)';
+                        echo '</legend>
+                                <textarea id="question_5_options" cols="2">Option1 Option2 Option3</textarea>
+                            </fieldset>
+                        </div>';
+                        break;
+                    case 'date':
+                    case 'time':
+                        echo '<div class="validation">
+                            <fieldset>
+                                <legend>Min</legend>
+                                <input type="' . $question["type"] . '" id="question_8_min" value="1">
+                            </fieldset>
+                            <fieldset>
+                                <legend>Default</legend>
+                                <input type="' . $question["type"] . '" id="question_8_max" value="3">
+                            </fieldset>
+                            <fieldset>
+                                <legend>Max</legend>
+                                <input type="' . $question["type"] . '" id="question_8_max" value="5">
+                            </fieldset>
+                        </div>';
+                        break;
+                    case 'slider':
+                        echo '<div class="validation">
+                            <fieldset>
+                                <legend>Min</legend>
+                                <input type="number" id="question_8_min" value="1">
+                            </fieldset>
+                            <fieldset>
+                                <legend>Default</legend>
+                                <input type="number" id="question_8_max" value="3">
+                            </fieldset>
+                            <fieldset>
+                                <legend>Max</legend>
+                                <input type="number" id="question_8_max" value="5">
+                            </fieldset>
+                        </div>';
+                        break;
+                    case 'file':
+                        echo '<div class="validation">
+                            <fieldset>
+                                <legend>Allowed Types - Seperated by spaces</legend>
+                                <input type="text" id="question_8_min" value="png txt jpg pdf">
+                            </fieldset>
+                            <fieldset>
+                                <legend>Max</legend>
+                                <input type="number" id="question_8_max" value="5">
+                            </fieldset>
+                        </div>';
+                        break;
+                    default:
+                        break;
+                }
+                echo '<div class="updown"><i class="fas fa-chevron-up"></i><i class="fas fa-chevron-down"></i></div></div></div>';
             }
             ?>
         </div>

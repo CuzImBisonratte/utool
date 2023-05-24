@@ -163,6 +163,75 @@ Question
     grid-area: question_area;
 }
 
+.options-container {
+    border-top: 2px solid #888;
+    display: none;
+    grid-template-columns: 1fr min-content;
+    grid-template-rows: 1fr min-content;
+    gap: 0px 0px;
+    grid-template-areas:
+        "options updown"
+        "validation updown";
+    padding-top: 0.5rem;
+}
+
+.validation {
+    grid-area: validation;
+    display: flex;
+    flex-direction: row;
+}
+
+.options {
+    grid-area: options;
+    display: flex;
+    flex-direction: row;
+}
+
+.options fieldset,
+.validation fieldset {
+    border-radius: 0.25rem;
+    flex-grow: 1;
+}
+
+.updown {
+    grid-area: updown;
+    font-size: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.125rem;
+}
+
+.updown i {
+    display: block;
+    background-color: var(--background2-color);
+    padding: 0.25rem;
+    cursor: pointer;
+}
+
+.updown .fa-chevron-up {
+    border-top-right-radius: 0.5rem;
+    border-top-left-radius: 0.5rem;
+}
+
+.updown .fa-chevron-down {
+    border-bottom-right-radius: 0.5rem;
+    border-bottom-left-radius: 0.5rem;
+}
+
+fieldset input {
+    padding: 0 !important;
+    width: 100% !important;
+    text-align: left !important;
+    height: fit-content !important;
+    border-radius: 0 !important;
+    border: 1px solid #888 !important;
+}
+
+fieldset textarea {
+    width: 100%;
+    resize: vertical;
+}
+
 /* One-line */
 .line input {
     border: 0;
