@@ -112,7 +112,7 @@ $questions = $questions_sorted;
                     break;
                 case 'toggle':
                     echo '<div class="question_area"><div class="question_toggle">';
-                    foreach (json_decode($question["params"], true)["labels"] as $option) {
+                    foreach (json_decode($question["params"], true)["options"] as $option) {
                         echo '<div class="option"><input type="radio" name="question_' . $question["id"] . '" id="question_' . $question["id"] . '_' . $option . '"><label for="question_' . $question["id"] . '_' . $option . '">' . $option . '</label></div>';
                     }
                     echo '</div></div>';
