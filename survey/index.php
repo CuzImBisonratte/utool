@@ -120,9 +120,9 @@ $questions = $questions_sorted;
                     break;
                 case 'rating':
                     echo '<div class="question_area"><div class="question_rating">';
-                    for ($i = 0; $i < 5; $i++) {
-                        if ($params["default"] - $i > 0) echo '<div class="rating_star" id="question_' . $question["id"] . '_' . $i . '"><i class="fas fa-star"></i></div>';
-                        else echo '<div class="rating_star" id="question_' . $question["id"] . '_' . $i . '"><i class="far fa-star"></i></div>';
+                    for ($i = 1; $i <= 5; $i++) {
+                        if ($params["default"] - $i >= 0) echo '<div class="rating_star" id="question_' . $question["id"] . '_' . $i . '" data-rating="' . $i . '"><i class="fas fa-star"></i></div>';
+                        else echo '<div class="rating_star" id="question_' . $question["id"] . '_' . $i . '" data-rating="' . $i . '"><i class="far fa-star"></i></div>';
                     }
                     echo '</div></div>';
                     break;
@@ -136,9 +136,11 @@ $questions = $questions_sorted;
     </main>
     <script src="/res/js/jquery/jquery-3.6.1.min.js"></script>
     <?php
+    $rating_script_injected = false;
     foreach ($questions as $question) {
         if ($question["type"] == "rating") {
-            echo '<script src="rating.js"></script>';
+            if (!$rating_script_injected) echo '<script src="rating.js"></script>';
+            $rating_script_injected = true;
             break;
         }
     }
