@@ -142,21 +142,21 @@ if ($survey["questions"] != NULL) if ($stmt = $con->prepare("SELECT * FROM " . $
                         break;
                     case 'multiplechoice':
                         echo '<div class="question_area"><div class="question_multiplechoice">';
-                        foreach (json_decode($question["params"], true)["options"] as $option) {
+                        foreach ($params["options"] as $option) {
                             echo '<div class="option"><input type="radio" name="question_' . $question["id"] . '" id="question_' . $question["id"] . '_' . $option . '"><label for="question_' . $question["id"] . '_' . $option . '">' . $option . '</label></div>';
                         }
                         echo '</div></div>';
                         break;
                     case 'select':
                         echo '<div class="question_area"><div class="question_select">';
-                        foreach (json_decode($question["params"], true)["options"] as $option) {
+                        foreach ($params["options"] as $option) {
                             echo '<div class="option"><input type="checkbox" name="question_' . $question["id"] . '" id="question_' . $question["id"] . '_' . $option . '"><label for="question_' . $question["id"] . '_' . $option . '">' . $option . '</label></div>';
                         }
                         echo '</div></div>';
                         break;
                     case 'dropdown':
                         echo '<div class="question_area"><div class="question_dropdown"><select id="question_' . $question["id"] . '">';
-                        foreach (json_decode($question["params"], true)["options"] as $option) {
+                        foreach ($params["options"] as $option) {
                             echo '<option value="' . $option . '">' . $option . '</option>';
                         }
                         echo '</select></div></div>';
@@ -169,9 +169,9 @@ if ($survey["questions"] != NULL) if ($stmt = $con->prepare("SELECT * FROM " . $
                         break;
                     case 'slider':
                         echo '<div class="question_area"><div class="question_slider"><input type="range" id="question_' . $question["id"];
-                        if (isset(json_decode($question["params"], true)["min"])) echo '" min="' . json_decode($question["params"], true)["min"];
-                        if (isset(json_decode($question["params"], true)["max"])) echo '" max="' . json_decode($question["params"], true)["max"];
-                        if (isset(json_decode($question["params"], true)["step"])) echo '" step="' . json_decode($question["params"], true)["step"];
+                        if (isset($params["min"])) echo '" min="' . $params["min"];
+                        if (isset($params["max"])) echo '" max="' . $params["max"];
+                        if (isset($params["step"])) echo '" step="' . $params["step"];
                         echo '"></div></div>';
                         break;
                     case 'file':
@@ -179,12 +179,12 @@ if ($survey["questions"] != NULL) if ($stmt = $con->prepare("SELECT * FROM " . $
                             <div class="question_file">
                                 <label for="question_' . $question["id"] . '">Choose a file</label>
                                 <input type="file" id="question_' . $question["id"] . '"';
-                        if (isset(json_decode($question["params"], true)["accept"])) echo ' accept="' . json_decode($question["params"], true)["accept"] . '"';
+                        if (isset($params["accept"])) echo ' accept="' . $params["accept"] . '"';
                         echo '></div></div>';
                         break;
                     case 'toggle':
                         echo '<div class="question_area"><div class="question_toggle">';
-                        foreach (json_decode($question["params"], true)["labels"] as $option) {
+                        foreach ($params["labels"] as $option) {
                             echo '<div class="option"><input type="radio" name="question_' . $question["id"] . '" id="question_' . $question["id"] . '_' . $option . '"><label for="question_' . $question["id"] . '_' . $option . '">' . $option . '</label></div>';
                         }
                         echo '</div></div>';
@@ -243,7 +243,11 @@ if ($survey["questions"] != NULL) if ($stmt = $con->prepare("SELECT * FROM " . $
                                 <legend>Options - Seperated by spaces';
                         if ($question["type"] === "toggle") echo ' (Max 3)';
                         echo '</legend>
-                                <textarea id="question_' . $question["id"] . '_options" cols="2">Option1 Option2 Option3</textarea>
+                                <textarea id="question_' . $question["id"] . '_options" cols="2">';
+                        foreach ($params["options"] as $option) {
+                            echo $option . ' ';
+                        }
+                        echo '</textarea>
                             </fieldset>
                         </div>';
                         break;
