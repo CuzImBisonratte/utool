@@ -134,6 +134,21 @@ $questions = $questions_sorted;
         }
         ?>
     </main>
+    <?php
+    $script_str = "<script>var questions = {";
+    foreach ($questions as $question) {
+        $script_str .= $question["id"] . ": {";
+        $script_str .= "type: '" . $question["type"] . "',";
+        $script_str .= "required: " . $question["required"] . ",";
+        $script_str .= "title: '" . $question["title"] . "',";
+        $script_str .= "params: " . $question["params"] . ",";
+        $script_str .= "changes: {},";
+        $script_str .= "},";
+    }
+    $script_str = substr($script_str, 0, -1);
+    $script_str .= "}</script>";
+    echo $script_str;
+    ?>
     <script src="/res/js/jquery/jquery-3.6.1.min.js"></script>
     <?php
     $rating_script_injected = false;
