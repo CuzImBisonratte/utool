@@ -4,6 +4,8 @@ if (!isset($_GET["id"])) die("No survey ID specified.");
 
 require_once $_SERVER['DOCUMENT_ROOT'] . '/config.php';
 
+require_once 'translations.php';
+
 $con = mysqli_connect($config["db"]["host"], $config["db"]["user"], $config["db"]["password"], $config["db"]["name"]);
 if (mysqli_connect_errno()) die("Failed to connect to MySQL: " . mysqli_connect_error());
 
@@ -15,6 +17,8 @@ if ($stmt = $con->prepare("SELECT * FROM " . $config["db"]["tables"]["surveys"] 
     $survey = $result->fetch_assoc();
     $stmt->close();
 } else die("Failed to prepare MySQL statement.");
+
+if (!isset($survey["questions"]) || strlen($survey["questions"]) == 0) die("No questions found.");
 
 // survey["questions"] is a list of qustion IDs | Format: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 if ($stmt = $con->prepare("SELECT * FROM " . $config["db"]["tables"]["questions"] . " WHERE id IN (" . implode(",", json_decode($survey["questions"])) . ")")) {
@@ -54,7 +58,7 @@ $questions = $questions_sorted;
 <body>
     <main>
         <div class="accent-color"></div>
-        <div class="page-title"><?= $survey["title"] ?><div id="required">Answers to questions marked with * are required</div>
+        <div class="page-title"><?= $survey["title"] ?><div id="required"><?= $translations["requirement_note"] ?></div>
         </div>
         <?php
 
@@ -133,6 +137,9 @@ $questions = $questions_sorted;
             echo '</div>';
         }
         ?>
+        <div id="submit">
+            <button><?= $translations["submit_button"] ?></button>
+        </div>
     </main>
     <?php
     $script_str = "<script>var questions = {";

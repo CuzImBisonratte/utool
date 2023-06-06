@@ -194,6 +194,32 @@ input[type=range]::-moz-range-thumb {
     color: #ffc400;
 }
 
+/* Submit button */
+#submit {
+    margin-top: 1rem;
+    background-color: var(--background3-color);
+    border-radius: 0.5rem;
+    padding: 0.25rem;
+    display: grid;
+    height: 4rem;
+    width: 50%;
+    transform: translateX(100%);
+    transition: 0.5s;
+}
+
+#submit button {
+    transition: 0.5s;
+    border-radius: 0.25rem;
+    border: 2px solid var(--accent-color);
+    cursor: pointer;
+    font-size: 1.25rem;
+}
+
+#submit button:hover {
+    background-color: var(--accent-color);
+    color: #FFFFFF;
+}
+
 /* Small screen */
 @media screen and (max-width: 500px) {
     main {
@@ -205,5 +231,10 @@ input[type=range]::-moz-range-thumb {
         flex-direction: row;
         gap: 0.5rem;
         font-size: 10vmin;
+    }
+
+    #submit {
+        width: 100%;
+        transform: translateX(0);
     }
 }
