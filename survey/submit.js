@@ -3,7 +3,6 @@ function submitForm() {
 
     for (const i in questions) {
         const question = questions[i];
-        console.log("question_" + question.id);
         question_element = document.getElementById("question_" + question.id);
         switch (question.type) {
             case "line":
