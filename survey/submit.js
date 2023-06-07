@@ -41,5 +41,17 @@ function submitForm() {
         }
     }
 
-    console.log(question_answers);
+    $.ajax({
+        type: "POST",
+        url: "submit.php",
+        data: {answers: question_answers},
+        success: function(data) {
+            if (data == "success") {
+                window.location.href = "thankyou.php";
+            } else {
+                alert("Error: " + data);
+            }
+        }
+    });
+
 }
