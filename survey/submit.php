@@ -42,15 +42,9 @@ foreach ($answers as $answer) {
 
     $errors_in_answer = [];
 
-    if ($question["required"] && (!isset($value) || strlen(json_encode($value)) == 0)) {
+    if ($question["required"] && (!isset($value) || $value == "")) {
         array_push($errors_in_answer, $translations["errors"]["required"]);
-        if (count($errors_in_answer) > 0) {
-            echo $question["id"] . ": " . json_encode($errors_in_answer);
-        }
-        continue;
-    }
-
-    switch ($question["type"]) {
+    } else switch ($question["type"]) {
         case "line":
         case "text":
             if ($question["required"] && strlen($value) == 0) array_push($errors_in_answer, $translations["errors"]["required"]);
@@ -127,11 +121,12 @@ foreach ($answers as $answer) {
     }
 
     if (count($errors_in_answer) > 0) {
-        echo $question["id"] . ": " . json_encode($errors_in_answer);
-        array_push($errors_in_question, array("id" => $question["id"], "errors" => $errors_in_answer));
+        array_push($errors, array("id" => $question["id"], "errors" => $errors_in_answer));
     }
 }
 
 if (count($errors) == 0) {
     exit("success");
+} else {
+    exit(json_encode($errors));
 }
