@@ -20,6 +20,8 @@ switch ($config["language"]) {
         $translations["errors"]["min_number"] = "Value must be greater than %s.";
         $translations["errors"]["max_number"] = "Value must be less than %s.";
         $translations["thankyou"]["title"] = "Thank you for your participation!";
+        $translations["thankyou"]["moreinfo_click"] = "Click here for more information.";
+        $translations["thankyou"]["moreinfo"] = "Your Answers have been submitted using the following anonymous ID: %s";
         break;
     case 'de':
         $translations["requirement_note"] = "Antworten auf mit * markierte Fragen sind erforderlich.";
@@ -40,5 +42,7 @@ switch ($config["language"]) {
         $translations["errors"]["min_number"] = "Wert muss groesser als %s sein.";
         $translations["errors"]["max_number"] = "Wert muss kleiner als %s sein.";
         $translations["thankyou"]["title"] = "Vielen Dank f&uuml;r Ihre Teilnahme!";
+        $translations["thankyou"]["moreinfo_click"] = "Klicken Sie hier f&uuml;r mehr Informationen.";
+        $translations["thankyou"]["moreinfo"] = "Ihre Antworten wurden unter folgendem Alias gesendet: %s";
         break;
 }

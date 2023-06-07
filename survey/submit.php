@@ -154,4 +154,5 @@ foreach ($answers as $answer_obj) {
     $stmt->close();
 }
 
-exit("success");
+if ($config["sender_id_output"]) exit("success-" . $sender_id);
+else exit("success");

@@ -44,7 +44,9 @@ function submitForm() {
         url: "submit.php",
         data: {answers: question_answers},
         success: function(data) {
-            if (data == "success") {
+            if (data.startsWith("success-")) {
+                window.location.href = "thankyou.php?senderID="+data.replace("success-", "");
+            } else if (data == "success") { 
                 window.location.href = "thankyou.php";
             } else {
                 alert("Error: " + data);

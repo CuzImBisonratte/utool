@@ -16,4 +16,30 @@ main i {
 
 main h1 {
     font-size: 2rem;
+    text-align: center;
+}
+
+main span {
+    display: block;
+    text-align: center;
+}
+
+#moreinfo_click {
+    height: 5em;
+    overflow: hidden;
+    text-decoration: underline;
+    display: grid;
+    place-content: center;
+}
+
+#moreinfo {
+    height: 0px;
+    overflow: hidden;
+    font-size: 1rem;
+    display: grid;
+    place-content: center;
+}
+
+* {
+    transition: 1s;
 }
