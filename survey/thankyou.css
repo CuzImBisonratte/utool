@@ -1,0 +1,19 @@
+body {
+    display: grid;
+    place-content: center;
+}
+
+main .circle {
+    margin: auto;
+    display: block;
+    width: fit-content;
+    color: var(--accent-color);
+}
+
+main i {
+    font-size: 2.5rem;
+}
+
+main h1 {
+    font-size: 2rem;
+}

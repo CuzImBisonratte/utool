@@ -19,6 +19,7 @@ switch ($config["language"]) {
         $translations["errors"]["invalid_number"] = "Invalid value.";
         $translations["errors"]["min_number"] = "Value must be greater than %s.";
         $translations["errors"]["max_number"] = "Value must be less than %s.";
+        $translations["thankyou"]["title"] = "Thank you for your participation!";
         break;
     case 'de':
         $translations["requirement_note"] = "Antworten auf mit * markierte Fragen sind erforderlich.";
@@ -38,5 +39,6 @@ switch ($config["language"]) {
         $translations["errors"]["invalid_number"] = "Ungueltiger Wert.";
         $translations["errors"]["min_number"] = "Wert muss groesser als %s sein.";
         $translations["errors"]["max_number"] = "Wert muss kleiner als %s sein.";
+        $translations["thankyou"]["title"] = "Vielen Dank f&uuml;r Ihre Teilnahme!";
         break;
 }
