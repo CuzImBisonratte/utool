@@ -9,6 +9,7 @@ function submitForm() {
             case "text":
             case "date":
             case "time":
+            case "slider":
                 question_answers.push({id: question.id, answer: question_element.value});
                 break;
             case "multiplechoice":
@@ -26,9 +27,6 @@ function submitForm() {
                 break;
             case "dropdown":
                 question_answers.push({id: question.id, answer: question_element.options[question_element.selectedIndex].value});
-                break;
-            case "slider":
-                question_answers.push({id: question.id, answer: question_element.value});
                 break;
             case "toggle":
                 const toggleChecked = document.querySelector('.question_'+question.id+':checked');
