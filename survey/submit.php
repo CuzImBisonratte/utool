@@ -128,5 +128,10 @@ foreach ($answers as $answer) {
 
     if (count($errors_in_answer) > 0) {
         echo $question["id"] . ": " . json_encode($errors_in_answer);
+        array_push($errors_in_question, array("id" => $question["id"], "errors" => $errors_in_answer));
     }
+}
+
+if (count($errors) == 0) {
+    exit("success");
 }
