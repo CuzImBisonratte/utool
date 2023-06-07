@@ -125,8 +125,33 @@ foreach ($answers as $answer) {
     }
 }
 
-if (count($errors) == 0) {
-    exit("success");
-} else {
-    exit(json_encode($errors));
+if (count($errors) != 0) {
+    die(json_encode($errors));
 }
+
+// Create a sender_id that is unique (10 tries)
+$sender_id = "";
+for ($i = 0; $i < 10; $i++) {
+    $sender_id = substr(str_shuffle(str_repeat($x = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ', ceil(10 / strlen($x)))), 1, 16);
+    $stmt = $con->prepare("SELECT * FROM " . $config["db"]["tables"]["answers"] . " WHERE sender_id = ?");
+    $stmt->bind_param("s", $sender_id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $stmt->close();
+    if ($result->num_rows == 0) break;
+}
+
+// Store answers in database 
+foreach ($answers as $answer_obj) {
+    $answer = $answer_obj["answer"];
+    $question_id = $answer_obj["id"];
+
+    if (is_array($answer)) $answer = json_encode($answer);
+
+    $stmt = $con->prepare("INSERT INTO " . $config["db"]["tables"]["answers"] . " (sender_id, question, answer) VALUES (?, ?, ?)");
+    $stmt->bind_param("sss", $sender_id, $question_id, $answer);
+    $stmt->execute();
+    $stmt->close();
+}
+
+exit("success");
