@@ -121,6 +121,21 @@ if ($survey["questions"] != NULL) if ($stmt = $con->prepare("SELECT * FROM " . $
                         echo '</table>';
                         break;
                     case 'select':
+                        echo '<table class="multiplechoice_table">';
+                        echo '<tr><th>Answer</th><th>Count</th></tr>';
+                        foreach ($params["options"] as $option) {
+                            $count = 0;
+                            if (isset($answers)) foreach ($answers as $answer) {
+                                if ($answer["question"] == $question["id"]) {
+                                    $answer_array = json_decode($answer["answer"]);
+                                    if (in_array($option, $answer_array)) {
+                                        $count++;
+                                    }
+                                }
+                            }
+                            echo '<tr><td>' . $option . '</td><td>' . $count . '</td></tr>';
+                        }
+                        echo '</table>';
                         break;
                     case 'line':
                     case 'text':
