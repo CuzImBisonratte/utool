@@ -30,6 +30,7 @@ main span {
     text-decoration: underline;
     display: grid;
     place-content: center;
+    cursor: pointer;
 }
 
 #moreinfo {
