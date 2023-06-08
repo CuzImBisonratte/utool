@@ -280,17 +280,14 @@ input[type=range]::-moz-range-thumb {
 }
 
 /* Rating */
-.rating .question_area {
-    margin: auto;
+table th,
+table td {
+    outline: 1px solid;
+    text-align: left;
 }
 
-.rating .question_rating {
-    display: flex;
-    flex-direction: row;
-    gap: 0.5rem;
-    font-size: 3rem;
-}
-
-.rating .question_rating .fas {
-    color: #ffc400;
+table {
+    min-width: fit-content;
+    max-width: 100%;
+    width: 50%;
 }
