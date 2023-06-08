@@ -152,6 +152,20 @@ if ($survey["questions"] != NULL) if ($stmt = $con->prepare("SELECT * FROM " . $
                         break;
                         break;
                     case 'slider':
+                        if (!isset($params["min"])) $params["min"] = 0;
+                        if (!isset($params["max"])) $params["max"] = 100;
+                        echo '<table class="slider_table">';
+                        echo '<tr><th>Answer</th><th>Count</th></tr>';
+                        for ($i = $params["min"]; $i <= $params["max"]; $i++) {
+                            $count = 0;
+                            if (isset($answers)) foreach ($answers as $answer) {
+                                if ($answer["question"] == $question["id"] && $answer["answer"] == $i) {
+                                    $count++;
+                                }
+                            }
+                            if ($count > 0) echo '<tr><td>' . $i . '</td><td>' . $count . '</td></tr>';
+                        }
+                        echo '</table>';
                         break;
                     case 'file':
                         break;
