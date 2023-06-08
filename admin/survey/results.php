@@ -139,16 +139,17 @@ if ($survey["questions"] != NULL) if ($stmt = $con->prepare("SELECT * FROM " . $
                         break;
                     case 'line':
                     case 'text':
+                    case 'time':
+                    case 'date':
                         echo '<ul>';
                         foreach ($answers as $answer) {
                             if ($answer["question"] == $question["id"]) {
+                                if ($question["type"] == "date") $answer["answer"] = date("d.m.Y", strtotime($answer["answer"]));
                                 echo '<li>' . $answer["answer"] . '</li>';
                             }
                         }
                         echo '</ul>';
                         break;
-                    case 'date':
-                    case 'time':
                         break;
                     case 'slider':
                         break;
