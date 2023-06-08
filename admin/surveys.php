@@ -102,7 +102,7 @@ if ($stmt = $con->prepare("SELECT * FROM " . $config["db"]["tables"]["surveys"])
                     <div class="survey_title">' . $survey["title"] . '</div>
                     <div class="survey_timespan' . $timespan_empty . '">' . $survey["timespan_start"] . ' -<br>' . $survey["timespan_end"] . '</div>
                     <div class="survey_answers">' . $answers . '</div>
-                    <div class="vellip_container" onclick="location.assign(\'./survey.php?id=' . $survey["id"] . '\')">&vellip;</div>
+                    <div class="vellip_container" onclick="location.assign(\'./survey/?id=' . $survey["id"] . '\')">&vellip;</div>
                 </div>';
             }
             ?>

@@ -1,5 +1,9 @@
 // General variables, functions
 const action_button_save = document.getElementById("action_button-save");
+const save_button = document.getElementById("action_button-save");
+const results_button = document.getElementById("action_button-results");
+const visibility_button = document.getElementById("action_button-visibility");
+const delete_button = document.getElementById("action_button-delete");
 
 function somethingChanged() {
     action_button_save.style.color = "var(--accent-color)";
@@ -30,3 +34,8 @@ document.querySelectorAll(".question").forEach((item) => {
         });
     });
 });
+
+// 
+// Result button
+// 
+results_button.addEventListener("click", () => location.assign("results.php?id=" + document.getElementById("survey_id").innerText));

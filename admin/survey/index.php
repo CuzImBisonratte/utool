@@ -60,15 +60,17 @@ if ($survey["questions"] != NULL) if ($stmt = $con->prepare("SELECT * FROM " . $
     <link rel="stylesheet" href="/res/fontawesome/css/solid.min.css">
     <link rel="stylesheet" href="/res/css/fonts.css">
     <link rel="stylesheet" href="/res/css/main.css">
-    <link rel="stylesheet" href="survey.css">
+    <link rel="stylesheet" href="style.css">
     <link rel="shortcut icon" href="/res/img/uTool.webp" type="image/x-icon">
 </head>
 
 <body>
+    <div id="survey_id" style="display: none;"><?= $_GET['id'] ?></div>
     <nav>
-        <div id="back-button" onclick="location.assign('surveys.php');"><i class="fas fa-chevron-left"></i></div>
+        <div id="back-button" onclick="location.assign('../surveys.php');"><i class="fas fa-chevron-left"></i></div>
         <input type="text" id="nav-spacer" value="<?= $survey["title"] ?>"></input>
         <div id="action_button-save"><i class="fas fa-save"></i></div>
+        <div id="action_button-results"><i class="fas fa-chart-pie"></i></div>
         <div id="action_button-visibility"><i class="fas fa-eye"></i></div>
         <div id="action_button-delete"><i class="fas fa-trash-can"></i></div>
     </nav>
@@ -305,7 +307,7 @@ if ($survey["questions"] != NULL) if ($stmt = $con->prepare("SELECT * FROM " . $
         </div>
     </main>
     <script src="/res/js/jquery/jquery-3.6.1.min.js"></script>
-    <script src="survey.js"></script>
+    <script src="script.js"></script>
 </body>
 
 </html>
