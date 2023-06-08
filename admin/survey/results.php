@@ -89,6 +89,18 @@ if ($survey["questions"] != NULL) if ($stmt = $con->prepare("SELECT * FROM " . $
                 if ($question["required"] == 1) echo '<div class="required">*</div>';
                 switch ($question["type"]) {
                     case 'rating':
+                        if (!isset($params["min"])) $params["min"] = 1;
+                        if (!isset($params["max"])) $params["max"] = 5;
+                        for ($i = $params["min"]; $i <= $params["max"]; $i++) {
+                            echo $i . ": ";
+                            $rating = 0;
+                            if (isset($answers)) foreach ($answers as $answer) {
+                                if ($answer["question"] == $question["id"] && $answer["answer"] == $i) {
+                                    $rating++;
+                                }
+                            }
+                            echo $rating . "<br>";
+                        }
                         break;
                     case 'line':
                     case 'text':
