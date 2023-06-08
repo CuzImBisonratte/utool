@@ -51,7 +51,7 @@ if ($survey["questions"] != NULL) if ($stmt = $con->prepare("SELECT * FROM " . $
     $result = $stmt->get_result();
     $answers = array();
     while ($row = $result->fetch_assoc()) {
-        $answers[$row["sender_id"]] = $row;
+        $answers[] = $row;
     }
     $stmt->close();
 } else die("Failed to prepare MySQL statement.");
@@ -104,13 +104,26 @@ if ($survey["questions"] != NULL) if ($stmt = $con->prepare("SELECT * FROM " . $
                         }
                         echo '</table>';
                         break;
-                    case 'line':
-                    case 'text':
-                        break;
-                    case 'select':
                     case 'multiplechoice':
                     case 'dropdown':
                     case 'toggle':
+                        echo '<table class="multiplechoice_table">';
+                        echo '<tr><th>Answer</th><th>Count</th></tr>';
+                        foreach ($params["options"] as $option) {
+                            $count = 0;
+                            if (isset($answers)) foreach ($answers as $answer) {
+                                if ($answer["question"] == $question["id"] && $answer["answer"] == $option) {
+                                    $count++;
+                                }
+                            }
+                            echo '<tr><td>' . $option . '</td><td>' . $count . '</td></tr>';
+                        }
+                        echo '</table>';
+                        break;
+                    case 'select':
+                        break;
+                    case 'line':
+                    case 'text':
                         break;
                     case 'date':
                     case 'time':
