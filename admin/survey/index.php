@@ -301,7 +301,8 @@ if ($survey["questions"] != NULL) if ($stmt = $con->prepare("SELECT * FROM " . $
                     default:
                         break;
                 }
-                echo '<div class="updown"><i class="fas fa-chevron-up"></i><i class="fas fa-chevron-down"></i></div></div></div>';
+                echo '<div class="updown"><i class="fas fa-chevron-up"></i><i class="fas fa-chevron-down"></i></div>';
+                echo "<div class='delete-question'><i class='fas fa-trash-can' onclick='deleteQuestion(" . $question["id"] . ")'></i> Delete</div></div></div>";
             }
             ?>
         </div>

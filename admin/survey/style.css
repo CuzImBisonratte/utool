@@ -169,11 +169,12 @@ Question
     border-top: 2px solid #888;
     display: none;
     grid-template-columns: 1fr min-content;
-    grid-template-rows: 1fr min-content;
+    grid-template-rows: 1fr min-content min-content;
     gap: 0px 0px;
     grid-template-areas:
         "options updown"
-        "validation updown";
+        "validation updown"
+        "delete-question delete-question";
     padding-top: 0.5rem;
 }
 
@@ -187,6 +188,23 @@ Question
     grid-area: options;
     display: flex;
     flex-direction: row;
+}
+
+.delete-question {
+    grid-area: delete-question;
+    margin: 0.25rem;
+    cursor: pointer;
+    border: 1px solid #888;
+    width: fit-content;
+    padding: 0.25rem;
+    border-radius: 0.5rem;
+    transition: 0.5s;
+}
+
+.delete-question:hover {
+    background-color: #f00;
+    color: #fff;
+    border-color: transparent;
 }
 
 .options fieldset,
