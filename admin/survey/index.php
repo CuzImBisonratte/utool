@@ -69,7 +69,7 @@ if ($survey["questions"] != NULL) if ($stmt = $con->prepare("SELECT * FROM " . $
     <nav>
         <div id="back-button" onclick="location.assign('../surveys.php');"><i class="fas fa-chevron-left"></i></div>
         <input type="text" id="nav-spacer" value="<?= $survey["title"] ?>"></input>
-        <div id="action_button-save"><i class="fas fa-save"></i></div>
+        <div id="action_button-save" onclick="updateValues();"><i class="fas fa-save"></i></div>
         <div id="action_button-results"><i class="fas fa-chart-pie"></i></div>
         <div id="action_button-visibility"><i class="fas fa-eye"></i></div>
         <div id="action_button-delete"><i class="fas fa-trash-can"></i></div>
@@ -262,7 +262,7 @@ if ($survey["questions"] != NULL) if ($stmt = $con->prepare("SELECT * FROM " . $
                             </fieldset>
                             <fieldset>
                                 <legend>Default</legend>
-                                <input type="' . $question["type"] . '" id="question_' . $question["id"] . '_max" value="3">
+                                <input type="' . $question["type"] . '" id="question_' . $question["id"] . '_default" value="3">
                             </fieldset>
                             <fieldset>
                                 <legend>Max</legend>
@@ -278,7 +278,7 @@ if ($survey["questions"] != NULL) if ($stmt = $con->prepare("SELECT * FROM " . $
                             </fieldset>
                             <fieldset>
                                 <legend>Default</legend>
-                                <input type="number" id="question_' . $question["id"] . '_max" value="3">
+                                <input type="number" id="question_' . $question["id"] . '_default" value="3">
                             </fieldset>
                             <fieldset>
                                 <legend>Max</legend>
@@ -307,8 +307,15 @@ if ($survey["questions"] != NULL) if ($stmt = $con->prepare("SELECT * FROM " . $
             ?>
         </div>
     </main>
+    <div class="overlays">
+        <div class="overlay" id="saving-overlay">
+            <h1>Bitte warten...</h1>
+            <p>Bitte warte einen Moment, während die Umfrage gespeichert wird.</p>
+        </div>
+    </div>
     <script src="/res/js/jquery/jquery-3.6.1.min.js"></script>
     <script src="script.js"></script>
+    <script src="update.js"></script>
 </body>
 
 </html>
