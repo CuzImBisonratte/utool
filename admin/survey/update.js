@@ -50,6 +50,7 @@ function updateValues() {
 					// If time taken to update is less than 2.5 seconds, wait until 2.5 seconds have passed before hiding the overlay
 					if (new Date().getTime() - start_time < 2500) {
 						setTimeout(() => {
+							$("#saving-overlay").css("transition", "all 1s ease 0s");
 							$("#saving-overlay").css("transform", "translateY(100%)");
 							$("#saving-overlay").css("border-top-left-radius", "100%");
 							$("#saving-overlay").css("border-top-right-radius", "100%");
@@ -57,8 +58,9 @@ function updateValues() {
 							action_button_save.style.border = "0";
 							window.onbeforeunload = null;
 							setTimeout(() => {
+								$("#saving-overlay").css("transition", "transform 1s ease 0s, border-radius 1s ease 0.25s");
 								$("#saving-overlay").css("height", 0);
-							}, 500);
+							}, 1000);
 						}, 2500 - (new Date().getTime() - start_time));
 					}
 				} else {
