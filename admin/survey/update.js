@@ -53,6 +53,9 @@ function updateValues() {
 							$("#saving-overlay").css("transform", "translateY(100%)");
 							$("#saving-overlay").css("border-top-left-radius", "100%");
 							$("#saving-overlay").css("border-top-right-radius", "100%");
+							action_button_save.style.color = "var(--text-color)";
+							action_button_save.style.border = "0";
+							window.onbeforeunload = null;
 							setTimeout(() => {
 								$("#saving-overlay").css("height", 0);
 							}, 500);

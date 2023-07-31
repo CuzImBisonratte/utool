@@ -7,6 +7,18 @@ const delete_button = document.getElementById("action_button-delete");
 
 function somethingChanged() {
     action_button_save.style.color = "var(--accent-color)";
+    window.onbeforeunload = function (e) {
+        e = e || window.event;
+
+        action_button_save.style.border = "4px solid var(--accent-color)";
+
+        // For IE and Firefox prior to version 4
+        if (e) {
+            e.returnValue = 'Sure?';
+        }
+        // For Safari
+        return 'Sure?';
+    };
 }
 
 // 
@@ -25,7 +37,7 @@ document.querySelectorAll(".question").forEach((item) => {
     // Add all child elements to eventlistener_list
     eventlistener_list.forEach((child) => {
         child.addEventListener("click", (e) => {
-            if(e.target.closest(".options-container")) return;
+            if (e.target.closest(".options-container")) return;
             question_title.setAttribute("contenteditable", "true");
             question_title.focus();
             edited_titles.push(e.target.id);
