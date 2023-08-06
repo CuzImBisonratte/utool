@@ -247,7 +247,8 @@ if ($survey["questions"] != NULL) if ($stmt = $con->prepare("SELECT * FROM " . $
                         echo '</legend>
                                 <textarea id="question_' . $question["id"] . '_options" cols="2">';
                         foreach ($params["options"] as $option) {
-                            echo $option . ' ';
+                            echo $option;
+                            if ($option !== end($params["options"])) echo ' ';
                         }
                         echo '</textarea>
                             </fieldset>
