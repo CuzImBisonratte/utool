@@ -43,10 +43,12 @@ function updateValues() {
 			type: "POST",
 			data: {
 				survey_title: $("#nav-spacer").val(),
+				// Survey id is in ?id= query string
+				survey_id: window.location.search.split("?id=")[1].split("&")[0],
 				questions: questions_array,
 			},
 			success: (data) => {
-				if (data == "success") {
+				if (data.length == 0) {
 					// If time taken to update is less than 2.5 seconds, wait until 2.5 seconds have passed before hiding the overlay
 					if (new Date().getTime() - start_time < 2500) {
 						setTimeout(() => {
@@ -60,6 +62,7 @@ function updateValues() {
 							setTimeout(() => {
 								$("#saving-overlay").css("transition", "transform 1s ease 0s, border-radius 1s ease 0.25s");
 								$("#saving-overlay").css("height", 0);
+								window.location.reload();
 							}, 1000);
 						}, 2500 - (new Date().getTime() - start_time));
 					}
