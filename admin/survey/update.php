@@ -16,8 +16,9 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/config.php';
 $con = mysqli_connect($config["db"]["host"], $config["db"]["user"], $config["db"]["password"], $config["db"]["name"]);
 if (mysqli_connect_errno()) die("Failed to connect to MySQL: " . mysqli_connect_error());
 
+
 if ($stmt = $con->prepare("UPDATE " . $config["db"]["tables"]["surveys"] . " SET title = ? WHERE id = ?")) {
-    $stmt->bind_param('si', $_POST['survey_title'], $_GET['survey_id']);
+    $stmt->bind_param('si', $_POST['survey_title'], $_POST['survey_id']);
     $stmt->execute();
     $stmt->close();
 
